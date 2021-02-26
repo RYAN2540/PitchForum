@@ -75,12 +75,22 @@ hr{
     background-color: transparent;
 }
 
+.row.display-flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.thumbnail {
+    height: 100%;
+}
+
 .jumbotron3{    
     background-color: #dbe6e5;
     color: black;
     border-radius: 0em !important;
     padding-left: 7% !important;
-    padding-right: 3% !important;    
+    padding-right: 3% !important;
+    padding-top: 1em !important;    
 }
 
 .jumbotron3 p{

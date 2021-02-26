@@ -112,7 +112,7 @@
                     <h3>{{current_user.username}}</h3>
                     <button class="btn btn-outline-primary"><a href="{{url_for('auth.logout')}}">Sign out</a></button>
                 {% else %}
-                    <h3><a href="{{url_for('auth.login')}}">Sign in</a></h3>
+                    <button class="btn btn-primary"><a href="{{url_for('auth.login')}}">Sign in</a></button>
                 {%endif%}
                 
             </div>
