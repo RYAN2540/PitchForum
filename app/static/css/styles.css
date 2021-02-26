@@ -67,15 +67,6 @@ hr{
     color: rgb(63, 62, 62);
 }
 
-
-
-
-
-
-/* .sources,
-.countries{    
-    display: none;
-}
 .jumbotron2{
     color: black;
     border-radius: 0em !important;
@@ -83,7 +74,7 @@ hr{
     padding: 0em !important;
     background-color: transparent;
 }
-.card img{
+/*.card img{
     object-fit: cover;
     max-width: 100%;    
 }
@@ -94,24 +85,7 @@ hr{
 .card p{
     font-size: medium;
 }
-.carousel-caption{
-    background-color: rgb(0,0,0,0.5);
-    padding: 0.5em;
-    color: white;      
-}
-.carousel-caption p{
-    font-size: medium;
-}
-.carousel a:hover{
-    color: cyan;
-}
-.row.display-flex {
-    display: flex;
-    flex-wrap: wrap;
-}
-.thumbnail {
-    height: 100%;
-}
+
 .jumbotron3{    
     background-color: #dbe6e5;
     color: black;
@@ -182,4 +156,4 @@ label{
         height: 120px; 
         object-fit: cover;   
     }   
-} */
+}*/
