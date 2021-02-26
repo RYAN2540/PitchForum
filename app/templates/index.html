@@ -107,7 +107,14 @@
         <!--right column section-->
         <div class="col-xs-12 col-md-3">
             <div class="jumbotron jumbotron3">
-                <h3>Sign in here</h3>
+                
+                {% if current_user.is_authenticated %}
+                    <h3>{{current_user.username}}</h3>
+                    <button class="btn btn-outline-primary"><a href="{{url_for('auth.logout')}}">Sign out</a></button>
+                {% else %}
+                    <h3><a href="{{url_for('auth.login')}}">Sign in</a></h3>
+                {%endif%}
+                
             </div>
             <div class="jumbotron jumbotron4">
                 <div class="row">
