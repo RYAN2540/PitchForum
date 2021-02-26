@@ -1,0 +1,36 @@
+{% macro displayPitches(pitches) %}
+
+    {% for pitch in pitches %}
+        <div class="col-xs-12 col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{pitch.pitch_title | upper}}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{pitch.category | upper}} PITCH</h6>
+                    <h6 class="card-subtitle mb-2 text-muted">{{pitch.posted}}</h6>
+                    <p class="card-text">{{pitch.pitch_text}}</p>                    
+                </div>
+            </div>
+        </div>
+
+    {% endfor %}
+
+{% endmacro %}
+
+{% macro displayPitchesHome(pitches) %}
+
+    {% for pitch in pitches %}
+        <div class="col-xs-12 col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{pitch.pitch_title | upper}}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{pitch.category | upper}} PITCH</h6>
+                    <h6 class="card-subtitle mb-2 text-muted">{{pitch.posted}}</h6>
+                    <p class="card-text">{{pitch.pitch_text}}</p>
+                    <p>Posted by: {{pitch.user}}</p>                    
+                </div>
+            </div>
+        </div>
+
+    {% endfor %}
+
+{% endmacro %}

@@ -37,6 +37,10 @@ a :hover{
     margin-bottom: 2em;
 }
 
+.border-c{
+    border-bottom: 1px solid black;    
+}
+
 .jumbotron1{    
     background-color: tan;
     color: black;
@@ -119,20 +123,18 @@ hr{
     margin-bottom: 1em;
 }
 
-/* .card img{
-    object-fit: cover;
-    max-width: 100%;    
-}
 .card{
     padding-top: 3%;
     padding-bottom: 3%;    
 }
+
 .card p{
     font-size: medium;
 }
-label{    
-    font-weight: 600;
-    font-size: large;
+
+/* .card img{
+    object-fit: cover;
+    max-width: 100%;    
 }
 
 .headline a{
@@ -150,6 +152,11 @@ label{
 .carousel-inner img{
     max-height: 35vh; 
     object-fit: cover;     
+}
+
+label{    
+    font-weight: 600;
+    font-size: large;
 }
 
 .item img {

@@ -8,8 +8,8 @@ from .. import db
 
 @main.route('/')
 def index():
-
-    return render_template('index.html')
+    pitches=Pitch.query.order_by(Pitch.posted.desc())    
+    return render_template('index.html', pitches=pitches)
 
 
 @main.route('/user/<uname>')
@@ -19,7 +19,7 @@ def profile(uname):
     if user is None:
         abort(404)
 
-    pitches=Pitch.query.filter_by(user_id=user.id)
+    pitches=Pitch.query.filter_by(user_id=user.id).order_by(Pitch.posted.desc())
 
     return render_template("profile/profile.html", user = user, pitches=pitches)
 
