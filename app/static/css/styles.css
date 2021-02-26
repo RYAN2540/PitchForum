@@ -74,7 +74,33 @@ hr{
     padding: 0em !important;
     background-color: transparent;
 }
-/*.card img{
+
+.jumbotron3{    
+    background-color: #dbe6e5;
+    color: black;
+    border-radius: 0em !important;
+    padding-left: 7% !important;
+    padding-right: 3% !important;    
+}
+
+.jumbotron3 p{
+    font-size: medium;
+}
+
+.jumbotron4{    
+    background-color: #dbe6e5;
+    color: black;
+    border-radius: 0em !important;
+    padding-left: 7% !important;
+    padding-right: 3% !important;
+    padding-top: 1em !important;    
+}
+
+.jumbotron4 p{
+    font-size: medium;
+}
+
+/* .card img{
     object-fit: cover;
     max-width: 100%;    
 }
@@ -85,48 +111,32 @@ hr{
 .card p{
     font-size: medium;
 }
-
-.jumbotron3{    
-    background-color: #dbe6e5;
-    color: black;
-    border-radius: 0em !important;
-    padding-left: 7% !important;
-    padding-right: 3% !important;    
-}
-.jumbotron3 p{
-    font-size: medium;
-}
 label{    
     font-weight: 600;
     font-size: large;
 }
-.jumbotron4{    
-    background-color: #dbe6e5;
-    color: black;
-    border-radius: 0em !important;
-    padding-left: 7% !important;
-    padding-right: 3% !important;
-    padding-top: 1em !important;    
-}
-.jumbotron4 p{
-    font-size: medium;
-}
+
 .headline a{
     color: rgb(14, 67, 121);
 }
+
 .headline a:hover{
     color: blue;
 }
+
 .head-suffix{
     font-size: 0.7em !important;
 }
+
 .carousel-inner img{
     max-height: 35vh; 
     object-fit: cover;     
 }
+
 .item img {
     width:100%
 }
+
 @media screen and (max-width: 1250px) {
     .brand h1{      
         font-size: 3em;    
@@ -142,6 +152,7 @@ label{
         font-size: small;
     }
 }
+
 @media screen and (max-width: 768px) {
     .brand h1{      
         font-size: 5em;    
@@ -150,6 +161,7 @@ label{
         line-height: 0.8em;
     }
 }
+
 @media screen and (min-width: 992px) {
     .card-img-top {
         width: 100%;
