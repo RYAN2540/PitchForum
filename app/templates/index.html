@@ -1,1 +1,64 @@
-<h1>Hello World</h1> 
+{% extends 'base.html' %}
+
+{% import 'macros.html' as macro%}
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <!--Sidenav-->
+        <div class="col-xs-12 col-md-3">
+            <div class="jumbotron jumbotron1">
+                <div class="row border-b">
+                    <div class="col-xs-12 brand">
+                        <a href="/">
+                            <h1>Pitch</h1>
+                            <h1>Forum</h1>
+                        </a>
+                        <h3 class="text-right">- a minute's pitch</h3>
+                    </div>
+                </div>                
+                <div class="row">
+                    <div class="col-xs-12">
+                        <p><a href="/">Top pitches</a></p>
+                        <hr>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <p>Categories</p>
+                            </div>                            
+                            <div class="col-xs-12">
+                                <div class="row lists">
+                                    <div class="col-xs-2"></div>
+                                    <div class="col-xs-10">
+                                        <p><a href="/">Pickup lines</a></p>
+                                        <p><a href="/">Interview pitch</a></p>
+                                        <p><a href="/">Product pitch</a></p>
+                                        <p><a href="/">Promotion pitch</a></p>
+                                        <p><a href="/">Idea pitch</a></p>                                         
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                                               
+                        <hr>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <p>Submit pitch</p>
+                            </div>                         
+                            <!--Submit pitch input here-->
+                        </div>                                               
+                        <hr>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
+
+{% endblock %}
