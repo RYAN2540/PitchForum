@@ -2,13 +2,13 @@ from flask import render_template,request,redirect,url_for,abort
 from . import main
 from flask_login import login_required,current_user
 from ..models import User,Pitch,Comment
-from .forms import UpdateProfile,PitchesForm,CommentForm
+from .forms import UpdateProfile,PitchesForm,CommentForm,UpvoteForm,DownvoteForm
 from .. import db
 
 
 @main.route('/')
 def index():
-    pitches=Pitch.query.order_by(Pitch.posted.desc())    
+    pitches=Pitch.query.order_by(Pitch.posted.desc())      
     return render_template('index.html', pitches=pitches)
 
 
@@ -81,7 +81,9 @@ def category(cat):
 @login_required
 def comment(pitch_id):
     pitch=Pitch.query.filter_by(id=pitch_id).first()
-    form = CommentForm()    
+    form = CommentForm()
+    form1 = UpvoteForm()
+    form2 = DownvoteForm()    
     if form.validate_on_submit():
         new_comment = form.comment.data             
 
@@ -92,7 +94,17 @@ def comment(pitch_id):
         this_comment.save_comment()
         return redirect(url_for('.comment', pitch_id=pitch_id))
 
+    if form1.validate_on_submit() and form1.upvote.data:
+        pitch.upvotes+=1
+        db.session.commit()
+        return redirect(url_for('.comment', pitch_id=pitch_id))
+
+    elif form2.validate_on_submit() and form2.downvote.data:
+        pitch.downvotes+=1
+        db.session.commit()
+        return redirect(url_for('.comment', pitch_id=pitch_id))
+
     comments=Comment.query.filter_by(pitch_id=pitch_id).order_by(Comment.posted.desc())  
     title = pitch.pitch_title
-    return render_template('new_comment.html',title = title, comments=comments, comment_form=form, pitch=pitch)
+    return render_template('new_comment.html',title = title, comments=comments, comment_form=form, pitch=pitch, upvote_form=form1, downvote_form=form2)
 

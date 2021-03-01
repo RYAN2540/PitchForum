@@ -67,7 +67,21 @@
                                 <h6 class="card-subtitle mb-2 text-muted">{{pitch.category | upper}} PITCH</h6>                    
                                 <h6 class="card-subtitle mb-2 text-muted">{{pitch.posted}}</h6>
                                 <p class="card-text">{{pitch.pitch_text}}</p>
-                                <p>Posted by: {{pitch.user}}</p>                    
+                                <p>Posted by: {{pitch.user}}</p>
+                                <div class="row padding">
+                                    <div class="col-xs-2 text-right">
+                                        {{ wtf.quick_form(upvote_form) }}
+                                    </div>
+                                    <div class="col-xs-2 text-left">
+                                        <button class="btn btn-primary">{{ pitch.upvotes }}</button>                                        
+                                    </div>
+                                    <div class="col-xs-2 text-right">
+                                        {{ wtf.quick_form(downvote_form) }}
+                                    </div>
+                                    <div class="col-xs-2 text-left">
+                                        <button class="btn btn-danger">{{ pitch.downvotes }}</button>
+                                    </div>
+                                </div>                    
                             </div>
                         </div>
                     </div>
