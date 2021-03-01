@@ -106,7 +106,7 @@
                 <div class="card-body">                   
                     <p class="card-text">{{comment.comment_text}}</p>
                     <h6 class="card-subtitle mb-2 text-muted">{{comment.user}}</h6>
-                    <h6 class="card-subtitle mb-2 text-muted">-{{comment.posted}}</h6>                     
+                    <h6 class="card-subtitle mb-2 text-muted">-{{comment.posted.strftime("%d %b %Y %I:%M %p")}}</h6>                     
                 </div>
             </div>
         </div>

@@ -18,8 +18,9 @@ def register():
         mail_message("Welcome to PitchForum!","email/welcome_user",user.email,user=user)
         return redirect(url_for('auth.login'))
     pitches=Pitch.query.order_by(Pitch.posted.desc())
+    top_pitch=Pitch.query.order_by(Pitch.upvotes.desc()).first()
     title = "Sign up"
-    return render_template('auth/register.html',registration_form = form, title=title, pitches=pitches)
+    return render_template('auth/register.html',registration_form = form, title=title, pitches=pitches, top_pitch=top_pitch)
 
 
 @auth.route('/login',methods=['GET','POST'])
@@ -33,9 +34,10 @@ def login():
 
         flash('Invalid username or password')
     
+    top_pitch=Pitch.query.order_by(Pitch.upvotes.desc()).first()
     pitches=Pitch.query.order_by(Pitch.posted.desc())
     title = "Log in"
-    return render_template('auth/login.html',login_form = login_form,title=title, pitches=pitches)
+    return render_template('auth/login.html',login_form = login_form,title=title, pitches=pitches, top_pitch=top_pitch)
 
 
 @auth.route('/logout')

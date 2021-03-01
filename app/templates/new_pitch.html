@@ -1,13 +1,119 @@
-{% extends 'base.html'%}
+{% extends 'base.html' %}
 {% import "bootstrap/wtf.html" as wtf %}
 
 {% block content %}
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                {{ wtf.quick_form(pitch_form) }}        
+<div class="container-fluid">
+    <div class="row">
+        <!--Sidenav-->
+        <div class="col-xs-12 col-md-3">
+            <div class="jumbotron jumbotron1">
+                <div class="row border-b">
+                    <div class="col-xs-12 brand">
+                        <a href="/">
+                            <h1>stand</h1>
+                            <h1>OUT</h1>
+                        </a>
+                        <h3 class="text-right">- a minute's pitch</h3>
+                    </div>
+                </div>                
+                <div class="row">
+                    <div class="col-xs-12">
+                        <p><a href="/">Latest pitches</a></p>
+                        <hr>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <p>Categories</p>
+                            </div>                            
+                            <div class="col-xs-12">
+                                <div class="row lists">
+                                    <div class="col-xs-2"></div>
+                                    <div class="col-xs-10">
+                                        <p><a href="{{url_for('main.category',cat='pickup')}}">Pickup lines</a></p>
+                                        <p><a href="{{url_for('main.category',cat='interview')}}">Interview pitch</a></p>
+                                        <p><a href="{{url_for('main.category',cat='product')}}">Product pitch</a></p>
+                                        <p><a href="{{url_for('main.category',cat='promotion')}}">Promotion pitch</a></p>
+                                        <p><a href="{{url_for('main.category',cat='idea')}}">Idea pitch</a></p>                                         
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                                               
+                        <hr>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <p><a href="{{url_for('main.new_pitch')}}">Submit pitch</a></p>
+                            </div>                           
+                        </div>                                               
+                        <hr>
+                    </div>                    
+                </div>
             </div>
         </div>
+
+        <!--Content section-->
+        <div class="col-xs-12 col-md-6">
+            <div class="jumbotron jumbotron2">                
+                <div class="row display-flex">
+                    <div class="col-xs-12 border-b">
+                        <h2 class="pitch-head">Your Pitch</h2>
+                    </div>
+                    <div class="col-xs-12">
+                        {{ wtf.quick_form(pitch_form) }}                              
+                    </div>                                                        
+                </div>
+            </div>
+        </div>
+
+        <!--right column section-->
+        <div class="col-xs-12 col-md-3">
+            <div class="jumbotron jumbotron3">
+
+                {% if current_user.is_authenticated %}                    
+                    <h3>{{current_user.username| capitalize}}</h3>
+                    <p class="text-muted"><a href="{{url_for('main.profile',uname=current_user.username)}}">View profile</a></p>
+                    <a href="{{url_for('auth.logout')}}"><button class="btn btn-primary">Sign out</button></a>                    
+                {% else %}
+                    <h3>Have an account?</h3>
+                    <a href="{{url_for('auth.login')}}"><button class="btn btn-primary">Sign in</button></a>                    
+                {%endif%}
+
+            </div>
+            <div class="jumbotron jumbotron4">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h2>Top Pitch</h2>
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">{{top_pitch.pitch_title | upper}}</h4>
+                                <h5 class="card-subtitle mb-2 text-muted">{{top_pitch.category | upper}} PITCH</h5>
+                                <h5 class="card-subtitle mb-2 text-muted">{{top_pitch.posted.strftime("%d %b %Y %I:%M %p")}}</h5>
+                                <p class="card-text">{{top_pitch.pitch_text}}</p>
+                                <p>Posted by: {{top_pitch.user}}</p>
+                                <div class="row">
+                                    <div class="col-xs-1 text-right">
+                                        <span class="glyphicon glyphicon-thumbs-up"></span>
+                                    </div>
+                                    <div class="col-xs-1">
+                                        <p>{{top_pitch.upvotes}}</p>
+                                    </div>
+                                    <div class="col-xs-1 text-right">
+                                        <span class="glyphicon glyphicon-thumbs-down"></span>
+                                    </div>
+                                    <div class="col-xs-1">
+                                        <p>{{top_pitch.downvotes}}</p>
+                                    </div>
+                                </div>
+                                <p class="text-muted"><a href="{{url_for('main.comment',pitch_id=top_pitch.id)}}">Comments & Votes</a></p>                    
+                            </div>
+                        </div>
+                    </div>
+                </div>        
+            </div>
+        </div>    
     </div>
+</div>
 
 {% endblock %}

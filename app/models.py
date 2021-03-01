@@ -50,11 +50,7 @@ class Pitch(db.Model):
         db.session.add(self)
         db.session.commit()
 
-    @classmethod
-    def get_pitches_by_category(cls,category):
-        pitches = Pitch.query.filter_by(category=category).all()
-        return pitches
-
+    
     def __repr__(self):
         return f'{self.pitch_title}'
 
@@ -71,11 +67,7 @@ class Comment(db.Model):
         db.session.add(self)
         db.session.commit()
 
-    @classmethod
-    def get_comment(cls,category):
-        pitches = Pitch.query.filter_by(category=category).all()
-        return pitches
-
+    
     def __repr__(self):
         return f'{self.comment}'
                            

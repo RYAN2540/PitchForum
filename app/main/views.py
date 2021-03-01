@@ -8,8 +8,9 @@ from .. import db
 
 @main.route('/')
 def index():
-    pitches=Pitch.query.order_by(Pitch.posted.desc())      
-    return render_template('index.html', pitches=pitches)
+    pitches=Pitch.query.order_by(Pitch.posted.desc())
+    top_pitch=Pitch.query.order_by(Pitch.upvotes.desc()).first()        
+    return render_template('index.html', pitches=pitches, top_pitch=top_pitch)
 
 
 @main.route('/user/<uname>')
@@ -20,8 +21,9 @@ def profile(uname):
         abort(404)
 
     pitches=Pitch.query.filter_by(user_id=user.id).order_by(Pitch.posted.desc())
+    top_pitch=Pitch.query.order_by(Pitch.upvotes.desc()).first()
 
-    return render_template("profile/profile.html", user = user, pitches=pitches)
+    return render_template("profile/profile.html", user = user, pitches=pitches, top_pitch=top_pitch)
 
 
 @main.route('/user/<uname>/update',methods = ['GET','POST'])
@@ -42,8 +44,9 @@ def update_profile(uname):
         return redirect(url_for('.profile',uname=user.username))
 
     pitches=Pitch.query.filter_by(user_id=user.id).order_by(Pitch.posted.desc())
+    top_pitch=Pitch.query.order_by(Pitch.upvotes.desc()).first()
 
-    return render_template('profile/update.html',form =form, user=user, pitches=pitches)
+    return render_template('profile/update.html',form =form, user=user, pitches=pitches, top_pitch=top_pitch)
 
 
 
@@ -65,15 +68,17 @@ def new_pitch():
         this_pitch.save_pitch()
         return redirect(url_for('.index'))
 
+    top_pitch=Pitch.query.order_by(Pitch.upvotes.desc()).first
     title = 'New Pitch'
-    return render_template('new_pitch.html',title = title, pitch_form=form)
+    return render_template('new_pitch.html',title = title, pitch_form=form, top_pitch=top_pitch)
 
 
 @main.route('/pitch/category/<cat>')
 def category(cat):
-    pitches=Pitch.query.filter_by(category=cat).order_by(Pitch.posted.desc())   
+    pitches=Pitch.query.filter_by(category=cat).order_by(Pitch.posted.desc())
+    top_pitch=Pitch.query.order_by(Pitch.upvotes.desc()).first()   
     title=pitches[0].category.capitalize()
-    return render_template('category.html', title=title, pitches=pitches)
+    return render_template('category.html', title=title, pitches=pitches, top_pitch=top_pitch)
 
 
 
@@ -104,8 +109,9 @@ def comment(pitch_id):
         db.session.commit()
         return redirect(url_for('.comment', pitch_id=pitch_id))
 
+    top_pitch=Pitch.query.order_by(Pitch.upvotes.desc()).first()
     comments=Comment.query.filter_by(pitch_id=pitch_id).order_by(Comment.posted.desc())  
     title = pitch.pitch_title
-    return render_template('new_comment.html',title = title, comments=comments, comment_form=form, pitch=pitch, upvote_form=form1, downvote_form=form2)
+    return render_template('new_comment.html',title = title, comments=comments, comment_form=form, pitch=pitch, upvote_form=form1, downvote_form=form2, top_pitch=top_pitch)
 
 
