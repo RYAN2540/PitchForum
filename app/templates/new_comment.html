@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
 
 {% import 'macros.html' as macro%}
 
@@ -36,7 +37,7 @@
                                         <p><a href="{{url_for('main.category',cat='interview')}}">Interview pitch</a></p>
                                         <p><a href="{{url_for('main.category',cat='product')}}">Product pitch</a></p>
                                         <p><a href="{{url_for('main.category',cat='promotion')}}">Promotion pitch</a></p>
-                                        <p><a href="{{url_for('main.category',cat='idea')}}">Idea pitch</a></p>                                        
+                                        <p><a href="{{url_for('main.category',cat='idea')}}">Idea pitch</a></p>                                         
                                     </div>
                                 </div>
                             </div>
@@ -47,7 +48,7 @@
                         <div class="row">
                             <div class="col-xs-12">
                                 <p><a href="{{url_for('main.new_pitch')}}">Submit pitch</a></p>
-                            </div>
+                            </div>                           
                         </div>                                               
                         <hr>
                     </div>                    
@@ -55,15 +56,25 @@
             </div>
         </div>
 
-        <!--content section-->
-        <div class="jumbotron jumbotron2">
-                <div class="row display-flex">
-                    <div class="col-xs-12 heading">
-                        <h2>Pitches</h2>
+        <!--Content section-->
+        <div class="col-xs-12 col-md-6">
+            <div class="jumbotron jumbotron2">                
+                <div class="row">
+                    <div class="col-xs-12 border-b">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">{{pitch.pitch_title | upper}}</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">{{pitch.category | upper}} PITCH</h6>                    
+                                <h6 class="card-subtitle mb-2 text-muted">{{pitch.posted}}</h6>
+                                <p class="card-text">{{pitch.pitch_text}}</p>
+                                <p>Posted by: {{pitch.user}}</p>                    
+                            </div>
+                        </div>
                     </div>
-
-                    {{ macro.displayPitchesHome(pitches) }}
-
+                    <div class="col-xs-12">
+                        {{ wtf.quick_form(comment_form) }}        
+                    </div><br>
+                    {{macro.displayComments(comments)}}
                 </div>
             </div>
         </div>
@@ -71,14 +82,15 @@
         <!--right column section-->
         <div class="col-xs-12 col-md-3">
             <div class="jumbotron jumbotron3">
-                
-                {% if current_user.is_authenticated %}
-                    <h3>{{current_user.username}}</h3>
-                    <button class="btn btn-outline-primary"><a href="{{url_for('auth.logout')}}">Sign out</a></button>
+
+                {% if current_user.is_authenticated %}                    
+                    <h3>{{current_user.username| capitalize}}</h3>
+                    <p class="text-muted"><a href="{{url_for('main.profile',uname=current_user.username)}}">View profile</a></p>
+                    <a href="{{url_for('auth.logout')}}"><button class="btn btn-secondary">Sign out</button></a>                    
                 {% else %}
-                    <a href="{{url_for('auth.login')}}"><button class="btn btn-primary">Sign in</button></a> 
+                    <a href="{{url_for('auth.login')}}"><button class="btn btn-primary">Sign in</button></a>                    
                 {%endif%}
-                
+
             </div>
             <div class="jumbotron jumbotron4">
                 <div class="row">

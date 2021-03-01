@@ -1,8 +1,8 @@
 from flask import render_template,request,redirect,url_for,abort
 from . import main
 from flask_login import login_required,current_user
-from ..models import User,Pitch
-from .forms import UpdateProfile,PitchesForm
+from ..models import User,Pitch,Comment
+from .forms import UpdateProfile,PitchesForm,CommentForm
 from .. import db
 
 
@@ -41,7 +41,9 @@ def update_profile(uname):
 
         return redirect(url_for('.profile',uname=user.username))
 
-    return render_template('profile/update.html',form =form, user=user)
+    pitches=Pitch.query.filter_by(user_id=user.id).order_by(Pitch.posted.desc())
+
+    return render_template('profile/update.html',form =form, user=user, pitches=pitches)
 
 
 
@@ -65,4 +67,32 @@ def new_pitch():
 
     title = 'New Pitch'
     return render_template('new_pitch.html',title = title, pitch_form=form)
+
+
+@main.route('/pitch/category/<cat>')
+def category(cat):
+    pitches=Pitch.query.filter_by(category=cat).order_by(Pitch.posted.desc())   
+    title=pitches[0].category.capitalize()
+    return render_template('category.html', title=title, pitches=pitches)
+
+
+
+@main.route('/pitch/comment/<pitch_id>',methods = ['GET','POST'])
+@login_required
+def comment(pitch_id):
+    pitch=Pitch.query.filter_by(id=pitch_id).first()
+    form = CommentForm()    
+    if form.validate_on_submit():
+        new_comment = form.comment.data             
+
+        # Updated comment instance
+        this_comment = Comment(comment_text=new_comment,pitch=pitch, user=current_user)
+
+        # save comment method
+        this_comment.save_comment()
+        return redirect(url_for('.comment', pitch_id=pitch_id))
+
+    comments=Comment.query.filter_by(pitch_id=pitch_id).order_by(Comment.posted.desc())  
+    title = pitch.pitch_title
+    return render_template('new_comment.html',title = title, comments=comments, comment_form=form, pitch=pitch)
 

@@ -14,4 +14,7 @@ class PitchesForm(FlaskForm):
     category_opts = RadioField('Choose category', validators=[Required()], choices=[('pickup','Pickup pitch'),('interview','Interview pitch'),('product','Product pitch'),('promotion','Promotion pitch'),('idea','Idea pitch')])
     submit = SubmitField('Post')
 
-
+class CommentForm(FlaskForm):
+    comment = StringField('Write comment.',validators = [Required()])
+    submit = SubmitField('Post')
+    

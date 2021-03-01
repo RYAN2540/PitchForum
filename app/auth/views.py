@@ -2,7 +2,7 @@ from flask import render_template,redirect,url_for,flash,request
 from flask_login import login_user,logout_user,login_required
 
 from . import auth
-from ..models import User
+from ..models import User,Pitch
 from .forms import RegistrationForm,LoginForm
 from .. import db
 from ..email import mail_message
@@ -17,8 +17,9 @@ def register():
         db.session.commit()
         mail_message("Welcome to PitchForum!","email/welcome_user",user.email,user=user)
         return redirect(url_for('auth.login'))
+    pitches=Pitch.query.order_by(Pitch.posted.desc())
     title = "Sign up"
-    return render_template('auth/register.html',registration_form = form)
+    return render_template('auth/register.html',registration_form = form, title=title, pitches=pitches)
 
 
 @auth.route('/login',methods=['GET','POST'])
@@ -31,9 +32,10 @@ def login():
             return redirect(request.args.get('next') or url_for('main.index'))
 
         flash('Invalid username or password')
-
+    
+    pitches=Pitch.query.order_by(Pitch.posted.desc())
     title = "Log in"
-    return render_template('auth/login.html',login_form = login_form,title=title)
+    return render_template('auth/login.html',login_form = login_form,title=title, pitches=pitches)
 
 
 @auth.route('/logout')

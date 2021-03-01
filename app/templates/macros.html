@@ -7,7 +7,8 @@
                     <h5 class="card-title">{{pitch.pitch_title | upper}}</h5>
                     <h6 class="card-subtitle mb-2 text-muted">{{pitch.category | upper}} PITCH</h6>
                     <h6 class="card-subtitle mb-2 text-muted">{{pitch.posted}}</h6>
-                    <p class="card-text">{{pitch.pitch_text}}</p>                    
+                    <p class="card-text">{{pitch.pitch_text}}</p>
+                    <p class="text-muted"><a href="{{url_for('main.comment',pitch_id=pitch.id)}}">View comments</a></p>                    
                 </div>
             </div>
         </div>
@@ -26,7 +27,44 @@
                     <h6 class="card-subtitle mb-2 text-muted">{{pitch.category | upper}} PITCH</h6>
                     <h6 class="card-subtitle mb-2 text-muted">{{pitch.posted}}</h6>
                     <p class="card-text">{{pitch.pitch_text}}</p>
-                    <p>Posted by: {{pitch.user}}</p>                    
+                    <p>Posted by: {{pitch.user}}</p>
+                    <p class="text-muted"><a href="{{url_for('main.comment',pitch_id=pitch.id)}}">View comments</a></p>                    
+                </div>
+            </div>
+        </div>
+
+    {% endfor %}
+
+{% endmacro %}
+
+{% macro displayPitchesCategory(pitches) %}
+
+    {% for pitch in pitches %}
+        <div class="col-xs-12 col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{pitch.pitch_title | upper}}</h5>                    
+                    <h6 class="card-subtitle mb-2 text-muted">{{pitch.posted}}</h6>
+                    <p class="card-text">{{pitch.pitch_text}}</p>
+                    <p>Posted by: {{pitch.user}}</p>  
+                    <p class="text-muted"><a href="{{url_for('main.comment',pitch_id=pitch.id)}}">View comments</a></p>                  
+                </div>
+            </div>
+        </div>
+
+    {% endfor %}
+
+{% endmacro %}
+
+{% macro displayComments(comments) %}
+
+    {% for comment in comments %}
+        <div class="col-xs-12">
+            <div class="card comment-card">
+                <div class="card-body">                   
+                    <p class="card-text">{{comment.comment_text}}</p>
+                    <h6 class="card-subtitle mb-2 text-muted">{{comment.user}}</h6>
+                    <h6 class="card-subtitle mb-2 text-muted">-{{comment.posted}}</h6>                     
                 </div>
             </div>
         </div>

@@ -123,13 +123,17 @@ hr{
     margin-bottom: 1em;
 }
 
-.card{
+/*.card{
     padding-top: 3%;
     padding-bottom: 3%;    
 }
 
 .card p{
     font-size: medium;
+} */
+
+.comment-card{
+    padding-top: 0.5em;    
 }
 
 /* .card img{
