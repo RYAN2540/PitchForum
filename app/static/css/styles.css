@@ -123,6 +123,14 @@ hr{
     margin-bottom: 1em;
 }
 
+.card-title{
+    font-weight: 600;
+}
+
+.pitch-head{
+    font-size: 3em !important;
+}
+
 /*.card{
     padding-top: 3%;
     padding-bottom: 3%;    

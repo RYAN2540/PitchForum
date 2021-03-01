@@ -108,3 +108,4 @@ def comment(pitch_id):
     title = pitch.pitch_title
     return render_template('new_comment.html',title = title, comments=comments, comment_form=form, pitch=pitch, upvote_form=form1, downvote_form=form2)
 
+
