@@ -6,7 +6,7 @@
                 <div class="card-body">
                     <h5 class="card-title">{{pitch.pitch_title | upper}}</h5>
                     <h6 class="card-subtitle mb-2 text-muted">{{pitch.category | upper}} PITCH</h6>
-                    <h6 class="card-subtitle mb-2 text-muted">{{pitch.posted.strftime("%d %b %Y %I:%M %p")}}</h6>
+                    <h6 class="card-subtitle mb-2 text-muted">{{pitch.posted}}</h6>
                     <p class="card-text">{{pitch.pitch_text}}</p>
                     <div class="row">
                         <div class="col-xs-1 text-right">
@@ -39,7 +39,7 @@
                 <div class="card-body">
                     <h5 class="card-title">{{pitch.pitch_title | upper}}</h5>
                     <h6 class="card-subtitle mb-2 text-muted">{{pitch.category | upper}} PITCH</h6>
-                    <h6 class="card-subtitle mb-2 text-muted">{{pitch.posted.strftime("%d %b %Y %I:%M %p")}}</h6>
+                    <h6 class="card-subtitle mb-2 text-muted">{{pitch.posted}}</h6>
                     <p class="card-text">{{pitch.pitch_text}}</p>
                     <p>Posted by: {{pitch.user}}</p>
                     <div class="row">
@@ -72,7 +72,7 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">{{pitch.pitch_title | upper}}</h5>                    
-                    <h6 class="card-subtitle mb-2 text-muted">{{pitch.posted.strftime("%d %b %Y %I:%M %p")}}</h6>
+                    <h6 class="card-subtitle mb-2 text-muted">{{pitch.posted}}</h6>
                     <p class="card-text">{{pitch.pitch_text}}</p>
                     <p>Posted by: {{pitch.user}}</p>  
                     <div class="row">
@@ -106,7 +106,7 @@
                 <div class="card-body">                   
                     <p class="card-text">{{comment.comment_text}}</p>
                     <h6 class="card-subtitle mb-2 text-muted">{{comment.user}}</h6>
-                    <h6 class="card-subtitle mb-2 text-muted">-{{comment.posted.strftime("%d %b %Y %I:%M %p")}}</h6>                     
+                    <h6 class="card-subtitle mb-2 text-muted">-{{comment.posted}}</h6>                     
                 </div>
             </div>
         </div>

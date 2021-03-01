@@ -65,7 +65,7 @@
                             <div class="card-body">
                                 <h4 class="card-title">{{pitch.pitch_title | upper}}</h4>
                                 <h5 class="card-subtitle mb-2 text-muted">{{pitch.category | upper}} PITCH</h5>                    
-                                <h5 class="card-subtitle mb-2 text-muted">{{pitch.posted.strftime("%d %b %Y %I:%M %p")}}</h5>
+                                <h5 class="card-subtitle mb-2 text-muted">{{pitch.posted}}</h5>
                                 <p class="card-text">{{pitch.pitch_text}}</p>
                                 <p>Posted by: {{pitch.user}}</p>
                                 <div class="row padding">
@@ -114,7 +114,7 @@
                             <div class="card-body">
                                 <h4 class="card-title">{{top_pitch.pitch_title | upper}}</h4>
                                 <h5 class="card-subtitle mb-2 text-muted">{{top_pitch.category | upper}} PITCH</h5>
-                                <h5 class="card-subtitle mb-2 text-muted">{{top_pitch.posted.strftime("%d %b %Y %I:%M %p")}}</h5>
+                                <h5 class="card-subtitle mb-2 text-muted">{{top_pitch.posted}}</h5>
                                 <p class="card-text">{{top_pitch.pitch_text}}</p>
                                 <p>Posted by: {{top_pitch.user}}</p>
                                 <div class="row">
@@ -145,3 +145,4 @@
 </div>
 
 {% endblock %}
+

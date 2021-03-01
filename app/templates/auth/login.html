@@ -71,6 +71,7 @@
             </div>
         </div>
     </div>
+
     <!--right column section-->
     <div class="col-xs-12 col-md-3">
       <div class="jumbotron jumbotron3">
@@ -102,7 +103,7 @@
                     <div class="card-body">
                         <h4 class="card-title">{{top_pitch.pitch_title | upper}}</h4>
                         <h5 class="card-subtitle mb-2 text-muted">{{top_pitch.category | upper}} PITCH</h5>
-                        <h5 class="card-subtitle mb-2 text-muted">{{top_pitch.posted.strftime("%d %b %Y %I:%M %p")}}</h5>
+                        <h5 class="card-subtitle mb-2 text-muted">{{top_pitch.posted}}</h5>
                         <p class="card-text">{{top_pitch.pitch_text}}</p>
                         <p>Posted by: {{top_pitch.user}}</p>
                         <div class="row">
@@ -125,11 +126,12 @@
             </div>
       </div>
     </div>
-
+    </div>
 
     
-      
+
+</div>     
   </div>
-</div>
 
 {% endblock %}
+
