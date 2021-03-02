@@ -2,10 +2,10 @@
 #### An app that allows one to post and react to one minute pitches in different categories, 01/03/2021
 #### By [Ryan Rotich](https://github.com/RYAN2540)
 
-### [PitchForum App]()
+### [PitchForum App](https://pitchforum.herokuapp.com/)
 
-<img src=""
-     alt=""
+<img src="./app/static/images/pic2.png"
+     alt="PitchForum home image"
      style="width=100%;" />
 
 ## Description
