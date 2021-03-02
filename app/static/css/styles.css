@@ -42,7 +42,7 @@ a :hover{
 }
 
 .jumbotron1{    
-    background-color: tan;
+    background-color:#727D71;
     color: black;
     border-radius: 0em !important;    
 }
@@ -56,7 +56,7 @@ a :hover{
 }
 
 .jumbotron1 a:hover{
-    color: darkblue;
+    color: #DBF4A7;
 }
 
 hr{
@@ -93,7 +93,7 @@ hr{
 }
 
 .jumbotron3{    
-    background-color: #c3d6d5;
+    background-color: #727D71;
     color: black;
     border-radius: 0em !important;
     padding-left: 7% !important;
@@ -107,7 +107,7 @@ hr{
 }
 
 .jumbotron4{    
-    background-color: #c3d6d5;
+    background-color: #727D71;
     color: black;
     border-radius: 0em !important;
     padding-left: 7% !important;
@@ -132,7 +132,7 @@ hr{
 }
 
 .blue-link{
-    color: darkblue;
+    color: #F0A202;
 }
 
 .comment-card{
